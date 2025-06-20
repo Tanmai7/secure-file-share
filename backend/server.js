@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World from Secure File Share!');
+app.use(express.json());
+
+app.post('/register', (req, res) => {
+  const { email, password } = req.body;
+  console.log('Received:', email, password);
+  res.status(200).json({ message: 'User registered successfully!' });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
