@@ -1,15 +1,14 @@
-const mongoose = require('mongoose');
+// models/User.js
+// run this separately to generate password hash
+const bcrypt = require('bcryptjs');
+bcrypt.hash('123456', 10).then(console.log);
 
-const UserSchema = new mongoose.Schema({
-email: {
-    type: String,
-    required: true,
-    unique: true,
+const users = [
+{
+    id: 1,
+    username: 'tanmai',
+    password: '$2a$10$abcxyz...', // use bcrypt to hash and store
 },
-password: {
-    type: String,
-    required: true,
-},
-});
+];
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = users;
